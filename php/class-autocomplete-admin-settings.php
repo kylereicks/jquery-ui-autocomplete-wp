@@ -144,7 +144,7 @@ if(!class_exists('Autocomplete_Admin_Settings')){
 
     // section info
     function jquery_ui_settings_section_info(){
-      echo 'Choose the UI theme for your autocomplete field';
+      echo 'Choose the UI theme for your autocomplete field. Choose "Custom" if you plan to enqueue a non-standard theme elsewhere.';
     }
 
     function search_style_settings_section_info(){
