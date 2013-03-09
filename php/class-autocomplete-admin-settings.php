@@ -108,14 +108,15 @@ if(!class_exists('Autocomplete_Admin_Settings')){
         'trontastic',
         'ui-darkness',
         'ui-lightness',
-        'vader'
+        'vader',
+        'custom'
       );
       if(in_array($input['theme_name'], $themes)){
         $setto = $input['theme_name'];
-        if(get_option('ui_theme_name') === false){
-          add_option('ui_theme_name', $setto);
+        if(get_option('_ui_theme_name') === false){
+          add_option('_ui_theme_name', $setto);
         }else{
-          update_option('ui_theme_name', $setto);
+          update_option('_ui_theme_name', $setto);
         }
       }else{
         $setto = '';
@@ -130,10 +131,10 @@ if(!class_exists('Autocomplete_Admin_Settings')){
       );
       if(in_array($input['search_style'], $themes)){
         $setto = $input['search_style'];
-        if(get_option('autocomplete_search_style') === false){
-          add_option('autocomplete_search_style', $setto);
+        if(get_option('_autocomplete_search_style') === false){
+          add_option('_autocomplete_search_style', $setto);
         }else{
-          update_option('autocomplete_search_style', $setto);
+          update_option('_autocomplete_search_style', $setto);
         }
       }else{
         $setto = '';
@@ -154,31 +155,32 @@ if(!class_exists('Autocomplete_Admin_Settings')){
     function jquery_ui_theme_name_field_view(){
     ?>
       <select name="jquery_ui_theme[theme_name]">
-        <option value="base"<?php echo get_option('ui_theme_name') === 'base' ? ' selected' : ''; ?>>Base</option>
-        <option value="black-tie"<?php echo get_option('ui_theme_name') === 'black-tie' ? ' selected' : ''; ?>>Black Tie</option>
-        <option value="blitzer"<?php echo get_option('ui_theme_name') === 'blitzer' ? ' selected' : ''; ?>>Blitzer</option>
-        <option value="cupertino"<?php echo get_option('ui_theme_name') === 'cupertino' ? ' selected' : ''; ?>>Cupertino</option>
-        <option value="dark-hive"<?php echo get_option('ui_theme_name') === 'dark-hive' ? ' selected' : ''; ?>>Dark Hive</option>
-        <option value="dot-luv"<?php echo get_option('ui_theme_name') === 'dot-luv' ? ' selected' : ''; ?>>Dot Luv</option>
-        <option value="eggplant"<?php echo get_option('ui_theme_name') === 'eggplant' ? ' selected' : ''; ?>>Eggplant</option>
-        <option value="excite-bike"<?php echo get_option('ui_theme_name') === 'excite-bike' ? ' selected' : ''; ?>>Excite Bike</option>
-        <option value="flick"<?php echo get_option('ui_theme_name') === 'flick' ? ' selected' : ''; ?>>Flick</option>
-        <option value="hot-sneaks"<?php echo get_option('ui_theme_name') === 'hot-sneaks' ? ' selected' : ''; ?>>Hot Sneaks</option>
-        <option value="humanity"<?php echo get_option('ui_theme_name') === 'humanity' ? ' selected' : ''; ?>>Humanity</option>
-        <option value="le-frog"<?php echo get_option('ui_theme_name') === 'le-frog' ? ' selected' : ''; ?>>Le Frog</option>
-        <option value="mint-choc"<?php echo get_option('ui_theme_name') === 'mint-choc' ? ' selected' : ''; ?>>Mint Choc</option>
-        <option value="overcast"<?php echo get_option('ui_theme_name') === 'overcast' ? ' selected' : ''; ?>>Overcast</option>
-        <option value="pepper-grinder"<?php echo get_option('ui_theme_name') === 'pepper-grinder' ? ' selected' : ''; ?>>Pepper Grinder</option>
-        <option value="redmond"<?php echo get_option('ui_theme_name') === 'redmond' ? ' selected' : ''; ?>>Redmond</option>
-        <option value="smoothness"<?php echo get_option('ui_theme_name') === 'smoothness' ? ' selected' : ''; ?>>Smoothness</option>
-        <option value="south-street"<?php echo get_option('ui_theme_name') === 'south-street' ? ' selected' : ''; ?>>South Street</option>
-        <option value="start"<?php echo get_option('ui_theme_name') === 'start' ? ' selected' : ''; ?>>Start</option>
-        <option value="sunny"<?php echo get_option('ui_theme_name') === 'sunny' ? ' selected' : ''; ?>>Sunny</option>
-        <option value="swanky-purse"<?php echo get_option('ui_theme_name') === 'swanky-purse' ? ' selected' : ''; ?>>Swanky Purse</option>
-        <option value="trontastic"<?php echo get_option('ui_theme_name') === 'trontastic' ? ' selected' : ''; ?>>Trontastic</option>
-        <option value="ui-darkness"<?php echo get_option('ui_theme_name') === 'ui-darkness' ? ' selected' : ''; ?>>UI Darkness</option>
-        <option value="ui-lightness"<?php echo get_option('ui_theme_name') === 'ui-lightness' ? ' selected' : ''; ?>>UI Lightness</option>
-        <option value="vader"<?php echo get_option('ui_theme_name') === 'vader' ? ' selected' : ''; ?>>Vader</option>
+        <option value="base"<?php echo get_option('_ui_theme_name') === 'base' ? ' selected' : ''; ?>>Base</option>
+        <option value="black-tie"<?php echo get_option('_ui_theme_name') === 'black-tie' ? ' selected' : ''; ?>>Black Tie</option>
+        <option value="blitzer"<?php echo get_option('_ui_theme_name') === 'blitzer' ? ' selected' : ''; ?>>Blitzer</option>
+        <option value="cupertino"<?php echo get_option('_ui_theme_name') === 'cupertino' ? ' selected' : ''; ?>>Cupertino</option>
+        <option value="dark-hive"<?php echo get_option('_ui_theme_name') === 'dark-hive' ? ' selected' : ''; ?>>Dark Hive</option>
+        <option value="dot-luv"<?php echo get_option('_ui_theme_name') === 'dot-luv' ? ' selected' : ''; ?>>Dot Luv</option>
+        <option value="eggplant"<?php echo get_option('_ui_theme_name') === 'eggplant' ? ' selected' : ''; ?>>Eggplant</option>
+        <option value="excite-bike"<?php echo get_option('_ui_theme_name') === 'excite-bike' ? ' selected' : ''; ?>>Excite Bike</option>
+        <option value="flick"<?php echo get_option('_ui_theme_name') === 'flick' ? ' selected' : ''; ?>>Flick</option>
+        <option value="hot-sneaks"<?php echo get_option('_ui_theme_name') === 'hot-sneaks' ? ' selected' : ''; ?>>Hot Sneaks</option>
+        <option value="humanity"<?php echo get_option('_ui_theme_name') === 'humanity' ? ' selected' : ''; ?>>Humanity</option>
+        <option value="le-frog"<?php echo get_option('_ui_theme_name') === 'le-frog' ? ' selected' : ''; ?>>Le Frog</option>
+        <option value="mint-choc"<?php echo get_option('_ui_theme_name') === 'mint-choc' ? ' selected' : ''; ?>>Mint Choc</option>
+        <option value="overcast"<?php echo get_option('_ui_theme_name') === 'overcast' ? ' selected' : ''; ?>>Overcast</option>
+        <option value="pepper-grinder"<?php echo get_option('_ui_theme_name') === 'pepper-grinder' ? ' selected' : ''; ?>>Pepper Grinder</option>
+        <option value="redmond"<?php echo get_option('_ui_theme_name') === 'redmond' ? ' selected' : ''; ?>>Redmond</option>
+        <option value="smoothness"<?php echo get_option('_ui_theme_name') === 'smoothness' ? ' selected' : ''; ?>>Smoothness</option>
+        <option value="south-street"<?php echo get_option('_ui_theme_name') === 'south-street' ? ' selected' : ''; ?>>South Street</option>
+        <option value="start"<?php echo get_option('_ui_theme_name') === 'start' ? ' selected' : ''; ?>>Start</option>
+        <option value="sunny"<?php echo get_option('_ui_theme_name') === 'sunny' ? ' selected' : ''; ?>>Sunny</option>
+        <option value="swanky-purse"<?php echo get_option('_ui_theme_name') === 'swanky-purse' ? ' selected' : ''; ?>>Swanky Purse</option>
+        <option value="trontastic"<?php echo get_option('_ui_theme_name') === 'trontastic' ? ' selected' : ''; ?>>Trontastic</option>
+        <option value="ui-darkness"<?php echo get_option('_ui_theme_name') === 'ui-darkness' ? ' selected' : ''; ?>>UI Darkness</option>
+        <option value="ui-lightness"<?php echo get_option('_ui_theme_name') === 'ui-lightness' ? ' selected' : ''; ?>>UI Lightness</option>
+        <option value="vader"<?php echo get_option('_ui_theme_name') === 'vader' ? ' selected' : ''; ?>>Vader</option>
+        <option value="custom"<?php echo get_option('_ui_theme_name') === 'custom' ? ' selected' : ''; ?>>Custom</option>
       </select>
     <?php
     }
@@ -186,8 +188,8 @@ if(!class_exists('Autocomplete_Admin_Settings')){
     function search_style_field_view(){
     ?>
       <select name="autocomplete_search_style[search_style]">
-        <option value="lookup"<?php echo get_option('autocomplete_search_style') === 'lookup' ? ' selected' : ''; ?>>Lookup</option>
-        <option value="search"<?php echo get_option('autocomplete_search_style') === 'search' ? ' selected' : ''; ?>>Search</option>
+        <option value="lookup"<?php echo get_option('_autocomplete_search_style') === 'lookup' ? ' selected' : ''; ?>>Lookup</option>
+        <option value="search"<?php echo get_option('_autocomplete_search_style') === 'search' ? ' selected' : ''; ?>>Search</option>
       </select>
     <?php
     }
