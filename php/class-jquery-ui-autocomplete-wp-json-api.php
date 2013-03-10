@@ -46,16 +46,24 @@ if(!class_exists(JQuery_UI_Autocomplete_WP_JSON_API)){
       return $category_names;
     }
 
-    private function post_titles($term, $style){
-      $all_post_titles = array();
-      $post_id_query = new WP_Query(array('post_type' => 'any', 'posts_per_page' => -1, 'fields' => 'ids'));
+    private function titles($post_type, $term, $style){
+      $titles = array();
+      $post_id_query = new WP_Query(array('post_type' => $post_type, 'posts_per_page' => -1, 'fields' => 'ids'));
       $match = $style === 'lookup' ? "/^$term/" : "/$term/";
       foreach($post_id_query->posts as $id){
         if(preg_match($match, get_the_title($id))){
-          array_push($all_post_titles, get_the_title($id));
+          array_push($titles, get_the_title($id));
         }
       }
-      return $all_post_titles;
+      return $titles;
+    }
+
+    private function post_titles($term, $style){
+      return $this->titles('post', $term, $style);
+    }
+
+    private function page_titles($term, $style){
+      return $this->titles('page', $term, $style);
     }
 
     private function users($role, $term, $style){
