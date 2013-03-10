@@ -115,7 +115,7 @@ if(!class_exists('Autocomplete_Admin_Settings')){
     }
 
     function search_style_settings_section_info(){
-      echo 'Choose "search" for autocomplete to suggest any occurance of your query. Select "Lookup" for autocomplete to suggest items that start with your query';
+      echo 'Choose "search" for autocomplete to suggest any occurance of your query. Select "Lookup" for autocomplete to suggest items that start with your query.';
     }
 
     function dataset_settings_section_info(){
