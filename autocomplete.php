@@ -47,9 +47,11 @@ if(!class_exists('WP_JQuery_UI_Autocomplete')){
     private function get_dataset_string(){
       $datasets_array = get_option('_autocomplete_datasets');
       $datasets_string = '';
-      foreach($datasets_array as $dataset => $checked){
-        if($checked == 1){
-          $datasets_string .= $dataset . '+';
+      if(!empty($datasets_array)){
+        foreach($datasets_array as $dataset => $checked){
+          if($checked == 1){
+            $datasets_string .= $dataset . '+';
+          }
         }
       }
       $datasets_string = rtrim($datasets_string, '+');
