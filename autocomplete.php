@@ -24,8 +24,12 @@ if(!class_exists('WP_JQuery_UI_Autocomplete')){
       wp_register_script('autocomplete_activation', plugins_url('js/autocomplete-activation.js', __FILE__), array('jquery-ui-autocomplete'), 0.1, true);
 
       // register styles
-      if(get_option('_jquery_ui_theme_name') !== 'custom'){
-        wp_register_style('jquery_ui_theme', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/' . get_option('_jquery_ui_theme_name') . '/jquery-ui.css', false, '1.9.2', false);
+      $theme_name = get_option('_jquery_ui_theme_name');
+      if(empty($theme_name)){
+        $theme_name = 'base';
+      }
+      if($theme_name !== 'custom'){
+        wp_register_style('jquery_ui_theme', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/' . $theme_name . '/jquery-ui.css', false, '1.9.2', false);
       }
 
       // enqueue scripts
